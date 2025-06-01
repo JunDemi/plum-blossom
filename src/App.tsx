@@ -1,18 +1,18 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './pages/Home';
+import { Outlet, useLocation } from 'react-router-dom';
+import Header from './components/layout/Header';
+import { AnimatePresence } from 'framer-motion';
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  const { pathname } = useLocation();
+  const isRoot = pathname === '/';
+  return (
+    <AnimatePresence mode='wait'>
+      <main className='from-plum-100 to-plum-300 min-h-screen bg-linear-to-b'>
+        {!isRoot && <Header />}
+        <Outlet key={pathname} />
+      </main>
+    </AnimatePresence>
+  );
 };
 
 export default App;
-
-const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <Home />,
-    },
-  ],
-  { basename: '/' },
-);

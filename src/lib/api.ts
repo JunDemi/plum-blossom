@@ -3,7 +3,6 @@ import axios, { AxiosError, type AxiosRequestConfig } from 'axios';
 /** axios instance for BE */
 const baseAxios = axios.create({
   baseURL: import.meta.env.VITE_APP_BACKEND_URL,
-  // withCredentials: true,
 });
 
 /** 공용 api호출 메소드 */

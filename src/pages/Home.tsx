@@ -1,24 +1,53 @@
-import { useQuery } from '@tanstack/react-query';
-import { ApiCaller } from '../lib/api';
-import type { IPlumGuild } from '../types/plum.interface';
+import { useNavigate } from 'react-router-dom';
+import Button from '../components/common/Button';
+import PageSection from '../components/layout/PageSection';
 
 const Home = () => {
-  //useQuery
-  const { data: guildData, status } = useQuery({
-    queryKey: ['get', 'guild'],
-    queryFn: async () =>
-      ApiCaller<IPlumGuild>('/plum', {
-        method: 'GET',
-      }),
-    refetchOnWindowFocus: false,
-  });
-  const memberList = guildData?.guild_member || [];
-
+  const router = useNavigate();
   return (
-    <section>
-      {status === 'success' ? memberList.map((member) => <div key={member}>{member}</div>) : 'Loading...'}
-    </section>
+    <PageSection className='flex h-screen flex-col items-center justify-center gap-[40px]'>
+      <div className='flex flex-col items-center justify-center'>
+        <p className='text-plum-500 text-[16px]'>MapleStory</p>
+        <p className='text-[40px] text-white'>스카니아 매화길드</p>
+      </div>
+
+      <div className='relative grid w-full grid-cols-1 lg:grid-cols-3 gap-[16px]'>
+        {mainMenu.map((menu) => (
+          <div
+            key={menu.no}
+            className='hover:bg-plum-150 shadow-thick bg-plum-100 flex h-[200px] cursor-pointer flex-col items-end justify-between p-[20px] transition-[.2s] hover:translate-y-[-3px]'
+            onClick={() => router(menu.link)}
+          >
+            <p className='text-plum-500 w-full text-[15px]'>{menu.title}</p>
+            <Button buttonType='color' size='lg'>
+              {menu.label}
+            </Button>
+          </div>
+        ))}
+      </div>
+    </PageSection>
   );
 };
 
 export default Home;
+
+const mainMenu = [
+  {
+    no: 1,
+    title: '길드에 가입하시고 싶으신가요?',
+    label: '길드 가입 신청',
+    link: '/register',
+  },
+  {
+    no: 2,
+    title: '저희 멤버들을 소개합니다',
+    label: '길드원 목록 조회',
+    link: '/members',
+  },
+  {
+    no: 3,
+    title: 'Comming Soon~!',
+    label: '커뮤니티 페이지',
+    link: '/',
+  },
+];
