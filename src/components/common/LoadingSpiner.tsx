@@ -4,7 +4,7 @@ interface LoadingProps {
 
 const LoadingSpiner = ({ size = 40 }: LoadingProps) => {
   return (
-    <div className='flex h-full min-h-[250px] w-full items-center justify-center'>
+    <div className='flex h-full min-h-[200px] w-full items-center justify-center'>
       <svg
         className={`fill-plum-400 animate-spin`}
         width={size}

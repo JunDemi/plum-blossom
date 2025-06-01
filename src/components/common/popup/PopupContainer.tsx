@@ -14,7 +14,7 @@ const PopupContainer = ({
     <motion.div
       initial={{ y: direction === 'up' ? 200 : -200 }}
       animate={{ y: 0 }}
-      className={`border-plum-500 border-[2px] bg-white ${className}`}
+      className={`border-plum-500 overflow-hidden border-[2px] bg-white p-[12px] ${className}`}
     >
       {children}
     </motion.div>

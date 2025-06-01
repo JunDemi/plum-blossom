@@ -64,7 +64,7 @@ const Button = ({
 
   if (buttonType === 'outline') {
     return (
-      <button {...props} className={`${common} border-blossom-400 hover:bg-blossom-100 border-[2px] bg-white`}>
+      <button {...props} className={`${common} border-white hover:bg-blossom-100 border-[2px] bg-white`}>
         <div className={`${textCommon} text-blossom-800`}>{children}</div>
       </button>
     );

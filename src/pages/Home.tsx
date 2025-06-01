@@ -11,11 +11,11 @@ const Home = () => {
         <p className='text-[40px] text-white'>스카니아 매화길드</p>
       </div>
 
-      <div className='relative grid w-full grid-cols-1 lg:grid-cols-3 gap-[16px]'>
+      <div className='relative grid w-full grid-cols-1 gap-[16px] lg:grid-cols-3'>
         {mainMenu.map((menu) => (
           <div
             key={menu.no}
-            className='hover:bg-plum-150 shadow-thick bg-plum-100 flex h-[200px] cursor-pointer flex-col items-end justify-between p-[20px] transition-[.2s] hover:translate-y-[-3px]'
+            className='hover:bg-plum-100 shadow-thick flex h-[200px] cursor-pointer flex-col items-end justify-between rounded-[6px] bg-white p-[20px] transition-[.2s] hover:translate-y-[-3px]'
             onClick={() => router(menu.link)}
           >
             <p className='text-plum-500 w-full text-[15px]'>{menu.title}</p>
